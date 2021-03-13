@@ -39,12 +39,15 @@ background-color: #DFDFDF;
 </style>
 """
 
-def bingo_table_to_image(table, dest_name="output/bingo.png", format="png"):
+footer = "<div style=\"font-size:8px\">{}</div>"
+
+def bingo_table_to_image(table, dest_name="output/bingo.png", table_id=None, format="png"):
     df = pd.DataFrame(table, columns=["B", "I", "N", "G", "O"])
 
     f = open("output/temp.html", "a")
     f.write(css)
     f.write(df.to_html(index=False)) # Index = false will remove that annoying row header
+    f.write(footer.format(table_id))
     f.close()
     
     imgkit.from_file("output/temp.html", dest_name, {"format": format})
