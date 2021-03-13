@@ -30,4 +30,4 @@ file_util.clear_and_create_output_dir()
 values = extractor.extract_values(source_value_file)
 
 # Run the script
-bingo_generator.create_bingo_cards(values, num_cards)
+bingo_generator.create_bingo_cards(values, int(num_cards))
